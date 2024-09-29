@@ -1,0 +1,4 @@
+title: "Meetup Countdown"
+description: "A countdown to a meetup with a friend"
+baseurl: "" # Leave this empty for the root domain
+theme: minima

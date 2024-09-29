@@ -6,30 +6,54 @@
     <title>Meetup Countdown</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #fff;
             text-align: center;
-            background-color: #f0f8ff;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         h1 {
-            font-size: 3rem;
-            margin-top: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
         }
         #countdown {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
+        }
+        .countdown-box {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        .countdown-box span {
+            display: block;
             font-size: 2rem;
-            margin: 20px;
+        }
+        .countdown-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         #slideshow {
-            margin-top: 50px;
             position: relative;
             width: 80%;
             max-width: 400px;
             height: 250px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
         #slideshow img {
             width: 100%;
             height: 100%;
+            border-radius: 10px;
             display: none;
         }
         #slideshow img.active {
@@ -39,8 +63,25 @@
 </head>
 <body>
 
-    <h1>Meetup Countdown</h1>
-    <div id="countdown"></div>
+    <h1>Countdown to the Meetup</h1>
+    <div id="countdown">
+        <div class="countdown-box">
+            <span id="days">0</span>
+            <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-box">
+            <span id="hours">0</span>
+            <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-box">
+            <span id="minutes">0</span>
+            <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-box">
+            <span id="seconds">0</span>
+            <span class="countdown-label">Seconds</span>
+        </div>
+    </div>
 
     <div id="slideshow">
         <img src="image1.jpg" class="active" alt="Image 1">
@@ -49,43 +90,41 @@
     </div>
 
     <script>
-        // Countdown Timer
-        const targetDate = new Date("2024-12-31T00:00:00").getTime();
-        const countdownElement = document.getElementById("countdown");
-
-        function updateCountdown() {
+        // Countdown Logic
+        const countdown = () => {
+            const targetDate = new Date("November 7, 2024 00:00:00").getTime();
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const difference = targetDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
-            if (distance < 0) {
-                clearInterval(timer);
-                countdownElement.innerHTML = "The meetup has started!";
+            if (difference < 0) {
+                document.getElementById("countdown").innerHTML = "The meetup has started!";
             }
-        }
+        };
 
-        const timer = setInterval(updateCountdown, 1000);
+        setInterval(countdown, 1000);
 
-        // Slideshow
+        // Slideshow Logic
         let slideIndex = 0;
-        const slides = document.querySelectorAll("#slideshow img");
-
-        function showSlides() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove("active");
-                if (index === slideIndex) slide.classList.add("active");
-            });
+        const slides = document.querySelectorAll('#slideshow img');
+        const showSlides = () => {
+            slides.forEach(slide => slide.classList.remove('active'));
             slideIndex = (slideIndex + 1) % slides.length;
-        }
+            slides[slideIndex].classList.add('active');
+        };
 
-        setInterval(showSlides, 3000);
+        setInterval(showSlides, 3000); // Change image every 3 seconds
     </script>
 
 </body>
 </html>
+
