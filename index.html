@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meetup Countdown</title>
+     <title>Magdalena 💜 Naveen Reunion</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -28,7 +28,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .countdown-box {
             display: inline-block;
@@ -46,18 +46,34 @@
         #slideshow {
             position: relative;
             width: 80%;
-            max-width: 400px;
-            height: 250px;
+            max-width: 1000px;
+            height: auto;
             margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #slideshow img {
             width: 100%;
-            height: 100%;
-            border-radius: 10px;
+            height: auto;
             display: none;
+            border-radius: 10px;
         }
         #slideshow img.active {
             display: block;
+        }
+        a {
+            margin-top: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        a:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -84,10 +100,12 @@
     </div>
 
     <div id="slideshow">
-        <img src="image1.jpg" class="active" alt="Image 1">
-        <img src="image2.jpg" alt="Image 2">
-        <img src="image3.jpg" alt="Image 3">
+        <img src="image1.jpg" class="active" alt="Image 1" style="aspect-ratio: 4000 / 2256;">
+        <img src="image2.jpg" alt="Image 2" style="aspect-ratio: 2248 / 3264;">
+        <img src="image3.jpg" alt="Image 3" style="aspect-ratio: 2160 / 3840;">
     </div>
+
+    <a href="https://www.youtube.com/dummy_playlist_link" target="_blank">Listen to our YouTube Playlist</a>
 
     <script>
         // Countdown Logic
