@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Magdalena 💜 Naveen Reunion</title>
+    <title>Magdalena 💜 Naveen Reunion</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -47,17 +47,21 @@
             position: relative;
             width: 80%;
             max-width: 1000px;
-            height: auto;
+            height: 500px; /* Fixed height for all images */
             margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden; /* To hide overflowing images */
+            background: rgba(255, 255, 255, 0.1); /* A nice background for the slideshow */
+            border-radius: 10px;
         }
         #slideshow img {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%; /* Ensures images fill the fixed box height */
+            max-width: 100%; /* Ensures images don’t exceed the container’s width */
+            object-fit: contain; /* Keeps aspect ratio intact, fits the image inside the container */
             display: none;
-            border-radius: 10px;
         }
         #slideshow img.active {
             display: block;
@@ -79,7 +83,7 @@
 </head>
 <body>
 
-    <h1>Countdown to the Meetup</h1>
+    <h1>Countdown to Magdalena 💜 Naveen Reunion</h1>
     <div id="countdown">
         <div class="countdown-box">
             <span id="days">0</span>
@@ -100,17 +104,17 @@
     </div>
 
     <div id="slideshow">
-        <img src="image1.jpg" class="active" alt="Image 1" style="aspect-ratio: 4000 / 2256;">
-        <img src="image2.jpg" alt="Image 2" style="aspect-ratio: 2248 / 3264;">
-        <img src="image3.jpg" alt="Image 3" style="aspect-ratio: 2160 / 3840;">
+        <img src="image1.jpg" class="active" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+        <img src="image3.jpg" alt="Image 3">
     </div>
 
-    <a href="https://www.youtube.com/dummy_playlist_link" target="_blank">Listen to our YouTube Playlist</a>
+    <a href="https://music.youtube.com/playlist?list=PLr4egYsLV21t_ECauiQQkdahcy65aPwKZ" target="_blank">Listen to our YouTube Playlist</a>
 
     <script>
         // Countdown Logic
         const countdown = () => {
-            const targetDate = new Date("November 7, 2024 00:00:00").getTime();
+            const targetDate = new Date("November 7, 2024 12:55:00").getTime();
             const now = new Date().getTime();
             const difference = targetDate - now;
 
